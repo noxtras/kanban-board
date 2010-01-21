@@ -1,0 +1,68 @@
+/**
+  * Site CSS 
+  *
+  * Common utility classes for project starter
+  *
+  * @author     Anis uddin Ahmad <anisniit@gmail.com>
+  * @link       http://www.ajaxray.com
+  */
+  
+* {
+    font-family: "Lucida Grande","Tahoma","Lucida Sans Unicode",Tahoma,Verdana;
+}
+
+/* ---------------------- COMMON UTILITY CLASSES ----------------------  */
+
+.left           { display: block; float: left;}
+.right          { display: block; float: right;}
+.invisible      { display: none;}
+.padded         { padding: 10px;}
+.specias        { margin: 10px;}
+.padded-clear   { clear: both; padding: 5px 0px}
+.clear          { clear: both; height: 0px; line-height: 0px}
+
+.text-right		{ text-align: right !important;}
+.text-center	{ text-align: center;}
+.transperent    { background: transparent !important; border-color: transparent !important;}
+
+/* Card board style */
+#card-table{width: 100%; border: 4px solid gray; margin: 0 auto; background-color: yellow }
+#card-table td,
+#card-table th{border: 1px solid gray; padding: 3px; border-width: 1px 0 1px 2px }
+#card-table td.sub-state,
+#card-table th.sub-state{border-left: 1px dashed gray;}
+
+.card{
+    display: block; float: left; width: 150px; height: 100px;
+    padding: 2px; margin: 2px; border: 1px solid #666;
+    overflow: hidden;
+}
+#card-dialog .active-card{
+    width: 95%;
+    padding: 10px;
+    height: 100px;
+}
+#card-dialog .editing{border: none}
+
+/* Editable fields */
+.editable{display:block; width: 300px; padding: 5px; border: 1px solid white}
+.edit-focus{background-color: #eee; border: 1px dotted yellow}
+
+.editing{border: 2px solid yellow}
+.editing input{background-color: yellow; width: 296px}
+.editing textarea{border: 1px solid gray; background-color: #fafafa}
+
+/* action links */
+span.actions{
+    display: block; margin: 2px 0;
+    height: 20px; line-height: 20px;
+    font-size: 10px; text-align: right; }
+span.actions a{padding: 2px 5px; background-color: #ddd; color: #666; text-decoration: none}
+span.actions a:hover{background-color: #666; color: #eee}
+
+
+/*
+@import "message.css";
+@import "table.css";
+@import "pagination.css";
+*/
