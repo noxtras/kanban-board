@@ -1,6 +1,6 @@
 
 function bindPageEvents(){
-    $('.project-name').editable('common/ajax.php', {
+    $('.project-name').editable('common/ajax_projects.php', {
          indicator  : 'Saving...',
          submitdata : {action: "renameProject"},
          cssclass   : 'editing'
@@ -11,7 +11,7 @@ function bindPageEvents(){
 function createProject()
 {
     if(! blockIfEmpty('project')){
-        $.getJSON("common/ajax.php?action=createProject&" + $('#projectForm').serialize(),
+        $.getJSON("common/ajax_projects.php?action=createProject&" + $('#projectForm').serialize(),
           function(data){
                 if(data.status == 'success'){
                     $('#projet-list tbody')
@@ -44,7 +44,7 @@ function deleteProject(id)
     if(id == ''){
         showCommonError('Error occured', 'Empty project found!');
     } else{
-        $.getJSON("common/ajax.php?action=deleteProject&id=" + id,
+        $.getJSON("common/ajax_projects.php?action=deleteProject&id=" + id,
             function(data){
                 if(data.status == 'success'){
                     $('#project-' + id).remove();
@@ -63,7 +63,7 @@ function updateProjectStatus(id, status)
     if(id == '' || (status != 'active' && status != 'archived')){
         showCommonError('Error occured', 'Empty project id or invalid status found!');
     } else{
-        $.getJSON("common/ajax.php?action=updateProjectStatus&id=" + id + '&status='+ status,
+        $.getJSON("common/ajax_projects.php?action=updateProjectStatus&id=" + id + '&status='+ status,
             function(data){
                 if(data.status == 'success'){
                     $('#project-' + id).remove();
