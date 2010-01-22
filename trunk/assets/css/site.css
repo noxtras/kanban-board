@@ -20,32 +20,14 @@
 .specias        { margin: 10px;}
 .padded-clear   { clear: both; padding: 5px 0px}
 .clear          { clear: both; height: 0px; line-height: 0px}
-
-.text-right		{ text-align: right !important;}
-.text-center	{ text-align: center;}
 .transperent    { background: transparent !important; border-color: transparent !important;}
 
-/* Card board style */
-#card-table{width: 100%; border: 4px solid gray; margin: 0 auto; background-color: yellow }
-#card-table td,
-#card-table th{border: 1px solid gray; padding: 3px; border-width: 1px 0 1px 2px }
-#card-table td.sub-state,
-#card-table th.sub-state{border-left: 1px dashed gray;}
-
-.card{
-    display: block; float: left; width: 150px; height: 100px;
-    padding: 2px; margin: 2px; border: 1px solid #666;
-    overflow: hidden;
-}
-#card-dialog .active-card{
-    width: 95%;
-    padding: 10px;
-    height: 100px;
-}
-#card-dialog .editing{border: none}
-
+/* Text formatting */
+.text-right		{ text-align: right !important;}
+.text-center	{ text-align: center;}
+.small          {font-size: 80%; color: gray}
 /* Editable fields */
-.editable{display:block; width: 300px; padding: 5px; border: 1px solid white}
+.editable{width: 250px; padding: 5px; border: 1px solid white}
 .edit-focus{background-color: #eee; border: 1px dotted yellow}
 
 .editing{border: 2px solid yellow}

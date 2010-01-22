@@ -1,6 +1,6 @@
 <?php
     $status = ($_GET['status'] == 'archived')? 'archived' : 'active';
-    $projects = getProjects();
+    $projects = getProjects($status);
 ?>
 
 <h2><?php echo ucfirst($status) ?> projects</h2>

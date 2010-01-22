@@ -1,5 +1,3 @@
-// Global settings vars
-defaultStatusId = '1';
 
 $(document).ready(function(){
 

@@ -1,0 +1,21 @@
+/* Card board style */
+#card-table{
+    width: 100%; border: 4px solid gray; margin: 0 auto;
+    background-color: yellow
+}
+#card-table td,
+#card-table th{border: 1px solid gray; padding: 3px; border-width: 1px 0 1px 2px }
+#card-table td.sub-state,
+#card-table th.sub-state{border-left: 1px dashed gray;}
+
+.card{
+    display: block; float: left; width: 150px; height: 100px;
+    padding: 2px; margin: 2px; border: 1px solid #666;
+    overflow: hidden;
+}
+#card-dialog .active-card{
+    width: 95%;
+    padding: 10px;
+    height: 100px;
+}
+#card-dialog .editing{border: none}

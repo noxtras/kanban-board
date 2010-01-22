@@ -3,7 +3,7 @@
 include_once("common/prepend.php");
 
 $page  = $_REQUEST['page'];
-$pages = array("home", "project");
+$pages = array("home", "project", 'settings');
 
 if (in_array($page, $pages) == false) {
     $page = 'home';

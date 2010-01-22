@@ -1,3 +1,4 @@
+defaultStatusId = '1';
 
 function bindPageEvents(){
     $('#card-table tbody td').sortable({
@@ -10,7 +11,7 @@ function bindPageEvents(){
         }
     });
 
-    $('.active-card').editable('common/ajax.php', {
+    $('.active-card').editable('common/ajax_cards.php', {
          indicator  : 'Saving...',
          submitdata : {action: "updateCard"},
          cssclass   : 'editing',
@@ -51,7 +52,7 @@ function bindPageEvents(){
 function createCard()
 {
     if(! blockIfEmpty('title')){
-        var url = "common/ajax.php?action=createCard&" + $('#cardForm').serialize();
+        var url = "common/ajax_cards.php?action=createCard&" + $('#cardForm').serialize();
 
         $.getJSON(url,
           function(data){
@@ -73,7 +74,7 @@ function createCard()
 
 function savePosition(card, status)
 {
-    var url  = 'common/ajax.php?action=savePosition';
+    var url  = 'common/ajax_cards.php?action=savePosition';
     url     += '&card='  + card;
     url     += '&status=' + status;
 
@@ -106,7 +107,7 @@ function deleteCard(id)
     if(id == 'no-card'){
         showCommonError('Error occured', 'No active to delete!');
     } else{
-        $.getJSON("common/ajax.php?action=deleteCard&id=" + id,
+        $.getJSON("common/ajax_cards.php?action=deleteCard&id=" + id,
             function(data){
                 if(data.status == 'success'){
                     $('#card-' + id).remove();

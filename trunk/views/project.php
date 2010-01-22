@@ -1,3 +1,4 @@
+<link href="<?php echo $config['baseurl'] ?>/assets/css/card.css" type="text/css" rel="stylesheet" />
 <?php
 $projectId = intval($_GET['id']);
 
@@ -88,4 +89,3 @@ $cards = Db::getResult('SELECT * FROM cards WHERE project_id = ?', $projectId);
     <?php endforeach; ?>
 </style>
 <script type="text/javascript" src="<?php echo $config['baseurl'] ?>/assets/js/card.js"></script>
-<?php var_dump($cardTypes);  ?>
