@@ -1,8 +1,9 @@
 <?php
 $projectId = intval($_GET['id']);
 
-$statusNames = Db::getResult('SELECT * FROM status_names ORDER BY serial');
-$project = Db::getRow('SELECT * FROM projects WHERE id = ?', $projectId);
+$statusNames = getStatusNames();
+$cardTypes = getCardTypes();
+$project = getProject($projectId);
 
 if($project):
 $cards = Db::getResult('SELECT * FROM cards WHERE project_id = ?', $projectId);
@@ -14,6 +15,12 @@ $cards = Db::getResult('SELECT * FROM cards WHERE project_id = ?', $projectId);
 <form id="cardForm" name="cardForm" onsubmit="return createCard()" class="invisible">
     <label>Card Title</label>
     <input type="text" name="title" id="title" size="50"/>
+    <label>type</label>
+    <select name="card_type" id="card_type">
+        <?php foreach($cardTypes as $cardType): ?>
+        <option value="<?php echo $cardType['id'] ?>"><?php echo $cardType['name'] ?></option>
+        <?php endforeach; ?>
+    </select>
     <input type="hidden" name="project" value="<?php echo $project['id'] ?>" />
     <input type="submit" value="Create">
 </form>
@@ -49,7 +56,7 @@ $cards = Db::getResult('SELECT * FROM cards WHERE project_id = ?', $projectId);
 
             <?php foreach($cards as $card): ?>
                 <?php if($card['status_id'] == $status['id']): ?>
-                <div class="card" id="card-<?php echo $card['id']; ?>"><?php 
+                <div class="card <?php echo 'card-type-'.$card['card_type_id'] ?>" id="card-<?php echo $card['id']; ?>"><?php
                     echo stripcslashes($card['body']);
                 ?></div>
                 <?php endif; ?>
@@ -73,11 +80,12 @@ $cards = Db::getResult('SELECT * FROM cards WHERE project_id = ?', $projectId);
         <div id="no-card" class="active-card editable"></div>
     </div>
 
-<style type="text/css"><?php foreach($statusNames as $status): ?>
-    #status-<?php echo $status['id'] ?> .card{
-        color: <?php echo $status['front_color'] ?>;
-        background-color: <?php echo $status['back_color'] ?>;
+<style type="text/css"><?php foreach($cardTypes as $cardType): ?>
+    .card-type-<?php echo $cardType['id'] ?>{
+        color: <?php echo $cardType['front_color'] ?>;
+        background-color: <?php echo $cardType['back_color'] ?>;
     }
     <?php endforeach; ?>
 </style>
 <script type="text/javascript" src="<?php echo $config['baseurl'] ?>/assets/js/card.js"></script>
+<?php var_dump($cardTypes);  ?>
