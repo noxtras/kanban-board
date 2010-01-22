@@ -1,6 +1,6 @@
 <?php
     $status = ($_GET['status'] == 'archived')? 'archived' : 'active';
-    $projects = Db::getResult('SELECT * FROM projects WHERE status = ?', $status);
+    $projects = getProjects();
 ?>
 
 <h2><?php echo ucfirst($status) ?> projects</h2>

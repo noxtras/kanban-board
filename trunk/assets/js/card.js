@@ -57,7 +57,7 @@ function createCard()
           function(data){
                 if(data.status == 'success'){
                     $('#status-' + defaultStatusId)
-                        .append('<div class="card" id="card-'+ data.message +'">'+ $('#title').val() +'</div>');
+                        .append('<div class="card card-type-'+ $('#card_type').val() +'" id="card-'+ data.message +'">'+ $('#title').val() +'</div>');
                         $('#title').val("");
                 } else {
                     showCommonError('Error occured', data.message);
@@ -77,9 +77,9 @@ function savePosition(card, status)
     url     += '&card='  + card;
     url     += '&status=' + status;
 
-    $.getJSON(url,
+    $.getJSON(url, null,
       function(data){
-            if(data.status != 'success'){
+        if((typeof data != 'object') || data.status != 'success'){
                 showCommonError('Error occured', data.message);
             }
         }
