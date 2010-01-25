@@ -30,17 +30,17 @@ $cards = Db::getResult('SELECT * FROM cards WHERE project_id = ?', $projectId);
     <thead>
         <tr>
         <?php foreach($statusNames as $status): ?>
-            <th class="<?php if($status['th_column'] < 1) echo 'sub-state' ?>">
+            <th class="<?php if($status['WIP_column'] < 1) echo 'sub-state' ?>">
                 <?php echo $status['name'] ?>
             </th>
         <?php endforeach; ?>
         </tr>
         
-        <tr id="thresholds">
+        <tr id="WIPs">
         <?php foreach($statusNames as $status): ?>
-            <?php if($status['th_column'] > 0): ?>
-            <th colspan="<?php echo $status['th_column'] ?>">
-                <?php  echo ($status['threshold'] == '0')? '&infin;' :  $status['threshold'] ?>
+            <?php if($status['WIP_column'] > 0): ?>
+            <th colspan="<?php echo $status['WIP_column'] ?>">
+                <?php  echo ($status['WIP'] == '0')? '&infin;' :  $status['WIP'] ?>
             </th>
             <?php endif; ?>
         <?php endforeach; ?>
@@ -52,8 +52,8 @@ $cards = Db::getResult('SELECT * FROM cards WHERE project_id = ?', $projectId);
         <?php foreach($statusNames as $status): ?>
             <td id="status-<?php echo $status['id'] ?>" 
                 valign="top"
-                threshold="<?php echo $status['threshold']?>"
-                class="<?php if($status['th_column'] < 1) echo 'sub-state' ?>">
+                wip="<?php echo $status['WIP']?>"
+                class="<?php if($status['WIP_column'] < 1) echo 'sub-state' ?>">
 
             <?php foreach($cards as $card): ?>
                 <?php if($card['status_id'] == $status['id']): ?>

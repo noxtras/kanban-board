@@ -27,23 +27,20 @@ function bindPageEvents(){
         $('#card-dialog').dialog('open');
     }));
 
-    $('#card-dialog').dialog({
-        autoOpen: false,
-        resizable: true,
-        width: 550,
-        height: 350,
-        modal: true,
-        buttons: {
-            "Close": function() {
-                $(this).dialog("close");
-                $('#card-' + $('#card-dialog .active-card').attr('id'))
-                    .text($('#card-dialog .active-card').text());
-                
-                $('#card-dialog .active-card').text('');
-                $('#card-dialog .active-card').attr('id', 'no-card');
-            }
+    var cardDialogOptions = dialogOptions;
+    cardDialogOptions.width = 550;
+    cardDialogOptions.height = 350;
+    cardDialogOptions.buttons = {
+        "Close": function() {
+            $(this).dialog("close");
+            $('#card-' + $('#card-dialog .active-card').attr('id'))
+                .text($('#card-dialog .active-card').text());
+
+            $('#card-dialog .active-card').text('');
+            $('#card-dialog .active-card').attr('id', 'no-card');
         }
-    });
+    };
+    $('#card-dialog').dialog(cardDialogOptions);
 
     // events on editing field
     $('#card-dialog .active-card input').focus(function(){alert('ok')});
@@ -91,7 +88,7 @@ function cardDeleteConfirmation()
 {
     id = $('#card-dialog .active-card').attr('id');
     $('#confirm-dialog').dialog('option', 'buttons', {
-        "No"  : function() { $(this).dialog("close"); },
+        "No"  : function() {$(this).dialog("close");},
         "Yes" : function() {
             deleteCard(id);
             $(this).dialog("close");
