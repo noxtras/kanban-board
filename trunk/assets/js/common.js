@@ -1,22 +1,20 @@
+// Some global settings
+dialogOptions = {
+    autoOpen: false,
+    resizable: false,
+    width: 350,
+    height: 260,
+    modal: false,
+    buttons: {
+            "Ok": function() {$(this).dialog("close");}
+        }
+}
 
 $(document).ready(function(){
 
-    $('#dialog').dialog({
-        autoOpen: false,
-        resizable: false,
-        width: 350,
-        buttons: {
-            "Ok": function() {$(this).dialog("close");}
-        }
-    });
-
-    $('#confirm-dialog').dialog({
-        autoOpen: false,
-        resizable: false,
-        width: 300,
-        modal: true,
-        buttons: {}
-    });
+    $('#dialog').dialog(dialogOptions);
+    dialogOptions.modal = true;
+    $('#confirm-dialog').dialog(dialogOptions);
 
     $(".editable").hover(
       function () { $(this).addClass('edit-focus'); },
@@ -29,10 +27,12 @@ $(document).ready(function(){
     }
 });
 
-function blockIfEmpty(field)
+function blockIfEmpty(field, name)
 {
+    var name = name || field;
+    
     if($('#' + field).val() == ''){
-        showCommonError('Value required', field + ' cannot be empty!');
+        showCommonError('Value required', name + ' cannot be empty!');
         return true;
     }
 
