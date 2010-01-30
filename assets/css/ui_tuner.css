@@ -1,0 +1,63 @@
+    /*--------------------------------------------------------------------------+  
+    |                   Styles for tuning jQuery UI styles                      |
+    +--------------------------------------------------------------------------*/
+
+/*  Styles for link buttons */
+.ui-link {padding: .4em 1em .4em 20px; margin-right: 10px;  text-decoration: none;position: relative; font-size:11px;}
+.ui-link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
+
+/* for buttons in table */
+.ui-state-hover.ui-state-focus{ background: #999 none; opacity: 0.8}
+
+/*  Styles for icon only links  */
+ul.ui-icons {margin: 0; padding: 0; overflow: visible; height: 25px;}
+ul.ui-icons li {
+    float: left; margin: 2px; padding: 2px 7px 3px 0; position: relative;
+    list-style: none; font-weight: normal; cursor: pointer;
+}
+ul.ui-icons span.ui-icon {float: left; margin: 0 4px;}
+
+/* Tabs with icon */
+li.iconized-tab span.ui-icon{float: left; margin: 0.3em 0.2em;}
+li.iconized-tab a{padding: 0.3em 1em 0.5em 0 !important; font-size: 13px;}
+
+/* UI Messages */
+div.ui-msgbox div.ui-state-highlight,
+div.ui-msgbox div.ui-state-error{
+    padding: 0pt 0.7em; margin: 10px 0 5px 0; font-size: 12px !important;   
+}
+div.ui-msgbox div.ui-state-highlight p,
+div.ui-msgbox div.ui-state-error p{
+    margin: 5px 0px;
+}
+div.ui-msgbox div.ui-state-highlight p span,
+div.ui-msgbox div.ui-state-error p span{
+    float: left; margin-right: 0.3em;
+}
+
+table.ui-widget{ width: 100%}
+table.narrow{width: 70%; margin: 0 auto}
+tr.ui-widget-header th,
+tr.ui-state-default td{
+    padding: 10px; 
+    border-bottom: 1px solid #ccc;
+    vertical-align: middle;
+}
+tr.ui-widget-header th{
+    font-weight: bold;
+    font-size: 14px;
+    padding: 5px;
+}
+/* UI inputs */
+select.ui-input, input.ui-input{
+    padding: .2em 0em .2em 0em; font-weight: normal; background: none;
+}
+/* Dialog form elements */
+.ui-dialog-content .text{
+    padding: 2px;
+    border: 1px solid gray;
+}
+
+input[type=submit]{
+    margin :0 0 2px 0px;
+}

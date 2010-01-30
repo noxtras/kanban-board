@@ -9,7 +9,10 @@
   
 * {
     font-family: "Lucida Grande","Tahoma","Lucida Sans Unicode",Tahoma,Verdana;
+    font-size: 12px;
 }
+
+
 
 /* ---------------------- COMMON UTILITY CLASSES ----------------------  */
 
@@ -26,12 +29,13 @@
 .text-right		{ text-align: right !important;}
 .text-center	{ text-align: center;}
 .small          {font-size: 80%; color: gray}
+
 /* Editable fields */
-.editable{width: 250px; padding: 5px; border: 1px solid white}
+.editable{padding: 3px; border: 1px solid white}
 .edit-focus{background-color: #eee; border: 1px dotted yellow}
 
 .editing{border: 2px solid yellow}
-.editing input{background-color: yellow; width: 296px}
+.editing input{background-color: yellow;}
 .editing textarea{border: 1px solid gray; background-color: #fafafa}
 
 /* action links */
@@ -41,7 +45,6 @@ span.actions{
     font-size: 10px; text-align: right; }
 span.actions a{padding: 2px 5px; background-color: #ddd; color: #666; text-decoration: none}
 span.actions a:hover{background-color: #666; color: #eee}
-
 
 /*
 @import "message.css";

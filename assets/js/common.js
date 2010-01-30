@@ -21,6 +21,15 @@ $(document).ready(function(){
       function () { $(this).removeClass('edit-focus'); }
     );
 
+    $(".ui-state-default").hover(
+        function () { $(this).addClass('ui-state-hover'); },
+        function () { $(this).removeClass('ui-state-hover'); }
+    );
+    $(".ui-link").hover(
+      function () { $(this).addClass('ui-state-focus'); },
+      function () { $(this).removeClass('ui-state-focus'); }
+    );
+
 
     if(typeof bindPageEvents  == 'function') {
     	bindPageEvents();
