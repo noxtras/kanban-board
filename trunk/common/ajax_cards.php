@@ -10,6 +10,8 @@ function deleteCard()
 
 function createCard()
 {
+    global $config;
+    
     $title     = strval($_GET['title']);
     $type_id   = strval($_GET['card_type']);
     $projectId = strval($_GET['project']);
@@ -20,7 +22,7 @@ function createCard()
         $data = array('body'=> $title,
                       'project_id'=> $projectId,
                       'card_type_id'=> $type_id,
-                      'status_id'=>'1',
+                      'status_id'=> $config['defaultStatus'],
                       'create_date'=> time()
             );
         Db::execute("INSERT INTO cards(body, project_id, status_id, card_type_id, create_date)

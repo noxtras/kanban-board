@@ -1,4 +1,3 @@
-defaultStatusId = '1';
 
 function bindPageEvents(){
     $('#card-table tbody td').sortable({
@@ -42,8 +41,6 @@ function bindPageEvents(){
     };
     $('#card-dialog').dialog(cardDialogOptions);
 
-    // events on editing field
-    $('#card-dialog .active-card input').focus(function(){alert('ok')});
 }
 
 function createCard()
