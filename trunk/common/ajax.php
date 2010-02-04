@@ -20,7 +20,7 @@ function updateJEditableField($table, $field, $value, $id)
     $data = array('id'=>$id, 'value'=>$value);
     try{
         Db::execute("UPDATE $table SET $field = :value WHERE id = :id", $data);
-        echo stripcslashes($value);
+        echo nl2br($value);
     } catch (Exception $e){
         echo 'Error occured';
     }

@@ -21,24 +21,45 @@ function bindPageEvents(){
      });
 
     $('.card').live('dblclick', (function(){
-        $('#card-dialog .active-card').text($(this).text());
+        $('#card-dialog .active-card').html($(this).find('.full-text').html());
         $('#card-dialog .active-card').attr('id', $(this).attr('id').substr('card-'.length));
+        $('#card-dialog .info').text($(this).find('.info').text());
         $('#card-dialog').dialog('open');
     }));
 
-    var cardDialogOptions = dialogOptions;
+    var cardDialogOptions = jQuery.extend({}, dialogOptions);
     cardDialogOptions.width = 550;
     cardDialogOptions.height = 350;
     cardDialogOptions.buttons = {
         "Close": function() {
             $(this).dialog("close");
-            $('#card-' + $('#card-dialog .active-card').attr('id'))
-                .text($('#card-dialog .active-card').text());
 
+            var fullHtml  = $('#card-dialog .active-card').html();
+            var shortText = fullHtml.split('<br>').join('\n').substring(0, config.miniCardLength);
+            var id        = $('#card-dialog .active-card').attr('id');
+
+            $('#card-' + id + ' .short-text').text(shortText);
+            $('#card-' + id + ' .full-text').html(fullHtml);
+
+            // Reset
             $('#card-dialog .active-card').text('');
             $('#card-dialog .active-card').attr('id', 'no-card');
         }
     };
+
+    $('#create-card').click(function(){
+        $('#cardForm').slideToggle('fast');
+        $('#type-legend').slideToggle('fast');
+        if($('#create-card').text().indexOf('Add New Card') != -1){
+            $('#create-card').html('<span class="ui-icon ui-icon-minusthick"></span>Hide Form');
+        } else {
+            $('#create-card').html('<span class="ui-icon ui-icon-plusthick"></span>Add New Card');
+        }
+
+
+        return false;
+    })
+
     $('#card-dialog').dialog(cardDialogOptions);
 
 }
@@ -51,7 +72,7 @@ function createCard()
         $.getJSON(url,
           function(data){
                 if(data.status == 'success'){
-                    $('#status-' + defaultStatusId)
+                    $('#status-' + config.defaultStatus)
                         .append('<div class="card card-type-'+ $('#card_type').val() +'" id="card-'+ data.message +'">'+ $('#title').val() +'</div>');
                         $('#title').val("");
                 } else {

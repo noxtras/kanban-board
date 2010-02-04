@@ -5,8 +5,11 @@ function bindPageEvents(){
          submitdata : {action: "renameProject"},
          cssclass   : 'editing'
      });
-}
 
+     $(".project-progress").each(function(i, obj){
+        $(this).progressbar({ value: $(this).attr('title')});
+     });
+}
 
 function createProject()
 {

@@ -6,8 +6,11 @@ $config['dbFile']   = APPPATH . 'data/kanban.db3';
 $config['ui_theme']   = 'pepper-grinder';
 
 
-$config['showCardCharacter'] = 200;
-
+// Card settings
+$config['miniCardLength']    = 110;
 $config['defaultCardType']   = 1;
+
 $config['defaultStatus']     = 1;
+$config['doneStatus']        = 7;
+
 ?>

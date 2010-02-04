@@ -14,6 +14,7 @@
         <script type="text/javascript" src="<?php echo $config['baseurl'] ?>/assets/js/common.js"></script>
         <script type="text/javascript">
             defaultStatusId = '<?php echo $config['defaultStatus'] ?>';
+            config = <?php echo json_encode($config); ?>
         </script>
         <title>Kanban Board</title>
     </head>

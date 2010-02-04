@@ -3,7 +3,7 @@ dialogOptions = {
     autoOpen: false,
     resizable: false,
     width: 350,
-    height: 260,
+    height: 220,
     modal: false,
     buttons: {
             "Ok": function() {$(this).dialog("close");}
@@ -21,7 +21,7 @@ $(document).ready(function(){
       function () { $(this).removeClass('edit-focus'); }
     );
 
-    $(".ui-state-default").hover(
+    $(".ui-state-default").not("#card-table tr").hover(
         function () { $(this).addClass('ui-state-hover'); },
         function () { $(this).removeClass('ui-state-hover'); }
     );
@@ -37,9 +37,7 @@ $(document).ready(function(){
 });
 
 function blockIfEmpty(field, name)
-{
-    var name = name || field;
-    
+{    
     if($('#' + field).val() == ''){
         showCommonError('Value required', name + ' cannot be empty!');
         return true;

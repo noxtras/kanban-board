@@ -4,7 +4,13 @@ $cardTypes = getCardTypes();
 ?>
 
 <h2>Card Types</h2>
-<a href="#add-card-type" onclick="return $('#cardtype-dialog').dialog('open')">Add Card type</a>
+<div class="add-form-holder">
+    <a href="#add-card-type" onclick="return $('#cardtype-dialog').dialog('open')"
+       class="ui-link ui-state-default ui-corner-all">
+        <span class="ui-icon ui-icon-plusthick"></span>Add Card type
+    </a>
+</div>
+
 <table id="card-types" class="ui-widget narrow">
     <thead>
         <tr class="ui-widget-header">
@@ -32,7 +38,12 @@ $cardTypes = getCardTypes();
 
 
 <h2>Workflow States</h2>
-<a href="#add-status" onclick="return $('#status-dialog').dialog('open')">Add Wrokflow State</a>
+<div class="add-form-holder">
+<a href="#add-status" onclick="return $('#status-dialog').dialog('open')"
+   class="ui-link ui-state-default ui-corner-all">
+    <span class="ui-icon ui-icon-plusthick"></span>Add Wrokflow State
+</a>
+</div>
 <table id="status-names" class="ui-widget narrow">
     <thead>
         <tr class="ui-widget-header">
@@ -65,24 +76,35 @@ $cardTypes = getCardTypes();
 
 <div id="cardtype-dialog" title="Add Card Type">
     <form name="cardtype" id="cardtype" method="get" action="" onsubmit="return false">
-        <label>Name</label>
-        <input type="text" name="name" id="name" />
-
-        <label>Front color</label>
-        <input type="text" name="front_color" id="front_color" />
-
-        <label>Back Color</label>
-        <input type="text" name="back_color" id="back_color" />
+        <ul>
+            <li>
+                <label>Name</label>
+                <input type="text" name="name" id="name" />
+            </li>
+            <li>
+                <label>Front color</label>
+                <input type="text" name="front_color" id="front_color" />
+            </li>
+            <li>
+                <label>Back Color</label>
+                <input type="text" name="back_color" id="back_color" />
+            </li>
+        </ul>
     </form>
 </div>
 
 <div id="status-dialog" title="Add Workflow State">
     <form name="status" id="status" method="get" action="" onsubmit="return false">
-        <label>Name</label>
-        <input type="text" name="name" id="name" />
-
-        <label>WIP Limit</label>
-        <input type="text" name="WIP" id="WIP" />
+        <ul>
+            <li>
+                <label>Name</label>
+                <input type="text" name="name" id="name" />
+            </li>
+            <li>
+                <label>WIP Limit</label>
+                <input type="text" name="WIP" id="WIP" />
+            </li>
+        </ul>
     </form>
 </div>
 
