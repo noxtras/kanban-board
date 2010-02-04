@@ -6,8 +6,7 @@ function bindPageEvents(){
          cssclass   : 'editing'
      });
 
-     var cardTypeDialogOptions = dialogOptions;
-     cardTypeDialogOptions.width = 550;
+     var cardTypeDialogOptions = jQuery.extend({}, dialogOptions);
      cardTypeDialogOptions.buttons = {
         "Add": function() {
             if(! blockIfEmpty('cardtype #name', 'Card name')){
@@ -30,7 +29,7 @@ function bindPageEvents(){
         }
     };
 
-    var statusDialogOptions = cardTypeDialogOptions;
+    var statusDialogOptions =  jQuery.extend(true, {}, cardTypeDialogOptions);
      statusDialogOptions.buttons.Add = function() {
             if(! blockIfEmpty('status #name', 'Workflow Status name ')){
                 $.getJSON("common/ajax_settings.php?action=addStatus&" + $('#status').serialize(),

@@ -53,7 +53,7 @@ function savePosition()
 function updateCard()
 {
     $cardId  = intval($_POST['id']);
-    $body    = trim(strval($_POST['value']));
+    $body    = trim(strip_tags(stripcslashes(strval($_POST['value']))));
 
     updateJEditableField('cards','body', $body, $cardId);
 }

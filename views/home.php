@@ -6,20 +6,23 @@
 <h2><?php echo ucfirst($status) ?> projects</h2>
 
 <?php if($status == 'active'): ?>
-<a href="#create-project" onclick="$('#projectForm').slideToggle()">Create Project</a>
-<form id="projectForm" name="projectForm" onsubmit="return createProject()" class="invisible">
-    <label>Project name</label>
-    <input type="text" name="project" id="project"/>
-    <input type="submit" value="Create">
-</form>
+<div class="add-form-holder">
+    <a href="#create-project" onclick="$('#projectForm').slideToggle()" class="ui-link ui-state-default ui-corner-all">
+        <span class="ui-icon ui-icon-plusthick"></span>Create Project
+    </a>
+    <form id="projectForm" name="projectForm" onsubmit="return createProject()" class="invisible add-form">
+        <label>Project name</label>
+        <input type="text" name="project" id="project"/>
+        <input type="submit" value="Create">
+    </form>
+</div>
 <?php endif; ?>
 
 <table id="projet-list" class="ui-widget narrow">
     <thead>
         <tr class="ui-widget-header">
-            <th>project</th>
-            <th>total cards</th>
-            <th>done</th>
+            <th>Project</th>
+            <th>Status</th>
             <th>&nbsp;</th>
         </tr>
     </thead>
@@ -29,8 +32,10 @@
             <td class="project-name editable" id="<?php echo $project['id'] ?>">
                 <?php echo $project['name'] ?>
             </td>
-            <td>20</td>
-            <td>5</td>
+            <td align="center">
+                <span class="project-progress" title="<?php echo round(($project['done_card']/$project['total_card'])*100) ?>"></span>
+                <span class="project-status"><?php echo $project['done_card'], ' of ', $project['total_card'] ?> cards completed</span>
+            </td>
             <td>
                 <a href="<?php echo $config['baseurl'].'?page=project&id='.$project['id'] ?>" class="ui-link ui-state-default ui-corner-all">
                     <span class="ui-icon ui-icon-newwin"></span> go
@@ -53,5 +58,7 @@
         <?php endforeach; ?>
     </tbody>
 </table>
+
+
 
 <script type="text/javascript" src="<?php echo $config['baseurl'] ?>/assets/js/project.js"></script>

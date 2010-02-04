@@ -4,7 +4,7 @@
     background-color: yellow
 }
 #card-table td,
-#card-table th{border: 1px solid gray; padding: 3px; border-width: 1px 0 1px 2px }
+#card-table th{border: 1px solid gray; padding: 3px; border-width: 1px 0 1px 2px; vertical-align:top; }
 #card-table td.sub-state,
 #card-table th.sub-state{border-left: 1px dashed gray;}
 
@@ -12,10 +12,20 @@
     display: block; float: left; width: 150px; height: 100px;
     padding: 2px; margin: 2px; border: 1px solid #666;
     overflow: hidden;
+    font-weight: normal;
 }
+
+#type-legend{margin-top: 5px}
+#type-legend span{
+    border: 1px solid #666666;
+    margin:2px 5px 0;
+    padding:3px 5px;
+}
+
 #card-dialog .active-card{
     width: 95%;
     padding: 10px;
-    height: 100px;
+    height: 180px;
+    overflow: auto
 }
 #card-dialog .editing{border: none}

@@ -40,12 +40,47 @@
 
 /* action links */
 span.actions{
-    display: block; margin: 2px 0;
+    display: block; margin: 2px 5px;
     height: 20px; line-height: 20px;
     font-size: 10px; text-align: right; }
-span.actions a{padding: 2px 5px; background-color: #ddd; color: #666; text-decoration: none}
+span.actions a{
+    padding: 2px 5px; border: 1px solid #bbb;
+    background-color: #ddd;
+    color: #666; text-decoration: none;
+}
 span.actions a:hover{background-color: #666; color: #eee}
 
+#card-dialog .info{
+    float: left;
+    padding-top: 6px; 
+}
+
+
+.add-form-holder{width: 70%; margin: 0 auto; text-align: right; padding: 10px 0; height: 25px}
+.add-form-holder a, .add-form{ float: right; margin-left:10px }
+
+.project-progress{display: block; width: 250px; height: 24px !important;}
+.project-status{font-weight: normal}
+
+#cardForm{margin-top: 4px}
+input, select, textarea{
+    border: 1px solid #999;
+}
+input:hover, select:hover, textarea:hover{
+    border: 1px solid #333;
+}
+
+.ui-dialog-content form li{
+    list-style: none;
+    clear: both;
+    padding: 5px 0;
+}
+.ui-dialog-content form label,
+.ui-dialog-content form input{
+    display: block;
+    float: left;
+    width: 120px;
+}
 /*
 @import "message.css";
 @import "table.css";

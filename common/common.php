@@ -19,7 +19,17 @@ function getProject($projectId)
 
 function getProjects($status = 'active')
 {
-    return Db::getResult('SELECT * FROM projects WHERE status = ?', $status);
+    global $config;
+    
+    return Db::getResult("SELECT  p.*, count(DISTINCT c1.id) total_card, count(DISTINCT c2.id) done_card
+                            FROM  projects p
+                       LEFT JOIN  cards c1 ON p.id = c1.project_id
+                       LEFT JOIN  cards c2 ON p.id = c2.project_id
+                                    AND c2.status_id = :card_status
+                           WHERE  p.status = :project_status
+                           GROUP  BY p.id", 
+            array('card_status' => $config['doneStatus'], 'project_status' => $status)
+        );
 }
 
 // Card Related functions
@@ -55,4 +65,17 @@ function indexArray($array, $indexBy = 'id')
     }
 
     return $output;
+}
+
+function printCard($card)
+{
+    global $config;
+    $bodyText = stripcslashes($card['body']);
+
+    echo '<span class="short-text">';
+    echo substr($bodyText, 0, $config['miniCardLength']);
+    if(strlen($bodyText) > $config['miniCardLength']) echo '...';
+    echo '</span>';
+    echo '<span class="full-text invisible">', nl2br($bodyText) ,'</span>';
+    echo '<span class="info invisible">Created on: ', date('Y-m-d H:i A', $card['create_date'])  ,'</span>';
 }
