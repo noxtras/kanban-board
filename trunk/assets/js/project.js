@@ -9,11 +9,24 @@ function bindPageEvents(){
      $(".project-progress").each(function(i, obj){
         $(this).progressbar({ value: $(this).attr('title')});
      });
+
+     var projectDialogOptions = jQuery.extend({}, dialogOptions);
+     projectDialogOptions.buttons = {
+        "Add": function() {
+            if(createProject()){
+                $(this).dialog("close");
+            }
+        },
+        "Cancel": function() {
+            $(this).dialog("close");
+        }
+    };
+    $('#project-dialog').dialog(projectDialogOptions);
 }
 
 function createProject()
 {
-    if(! blockIfEmpty('project')){
+    if(! blockIfEmpty('project', 'Project name ')){
         $.getJSON("common/ajax_projects.php?action=createProject&" + $('#projectForm').serialize(),
           function(data){
                 if(data.status == 'success'){
@@ -25,6 +38,7 @@ function createProject()
                 }
             }
         );// ended $.get
+        return true;
     }
 
     return false;
@@ -82,10 +96,12 @@ function updateProjectStatus(id, status)
 
 function makeProjectRow(id, name)
 {
-    var row  = '<tr id="project-'+ id +'">';
-    row += '<td><span class="project-name editable" id='+ id +'">'+ name +'</span></td>';
-    row += '<td>0</td><td>0</td>';
-    row += '<td><a href="?page=project&id='+ id +'">go</a> <a href="#">archive</a> <a href="#">delete</a> </td>';
+    var row  = '<tr id="project-'+ id +'"  class="ui-state-default">';
+    row += '    <td><span class="project-name" id='+ id +'">'+ name +'</span></td>';
+    row += '    <td>&nbsp;</td>';
+    row += '    <td><a class="ui-link ui-state-default ui-corner-all" href="?page=project&id='+ id +'">';
+    row += '        <span class="ui-icon ui-icon-folder-open"/>go';
+    row += '    </a></td>';
     row += '</tr>';
 
     return row;

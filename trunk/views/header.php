@@ -19,19 +19,36 @@
         <title>Kanban Board</title>
     </head>
     <body>
-
-        <div id="container">
-
-            <div id="header">
-                <a href="<?php echo $config['baseurl'] ?>"><img src="../assets/images/kanban.jpg" border="0" alt="KANBAN BOARD" /></a>
+        <div id="wrapper">
+            <div id="header-wrapper">
+                <div id="header">
+                    <div id="logo">
+                        <h1><a href="<?php echo $config['baseurl'] ?>"><img src="../assets/images/kanban.jpg" border="0" alt="kanban-board" /></a></h1>
+                        <p>simple, interactive, web based kanban playground</p>
+                    </div>
+                </div>
 
                 <ul id="util" class="ui-icons">
                     <?php if($page != 'home'): ?>
                     <li class="ui-state-default ui-corner-all" title="projects">
                         <a href="<?php echo $config['baseurl'] ?>">
-                            <span class="ui-icon ui-icon-note"></span> projects
+                            <span class="ui-icon ui-icon-home"></span> projects
                         </a>
                     </li>
+                    <?php else: ?>
+                        <?php if($_GET['status'] == 'archived'): ?>
+                        <li class="ui-state-default ui-corner-all" title="settings">
+                            <a href="<?php echo $config['baseurl'] ?>">
+                                <span class="ui-icon ui-icon-unlocked"></span> active projects
+                            </a>
+                        </li>
+                        <?php else: ?>
+                        <li class="ui-state-default ui-corner-all" title="settings">
+                            <a href="<?php echo $config['baseurl'] .'?status=archived' ?>">
+                                <span class="ui-icon ui-icon-locked"></span> archived projects
+                            </a>
+                        </li>
+                        <?php endif; ?>
                     <?php endif; ?>
                     <li class="ui-state-default ui-corner-all" title="settings">
                         <a href="<?php echo $config['baseurl'] .'?page=settings' ?>">
@@ -40,6 +57,9 @@
                     </li>
                 </ul>
             </div>
-	
-            <div id="content">
+            <!-- end #header -->
+
+            <div id="page">
+                <div id="page-bgtop">
+                <div id="page-bgbtm">
                 
