@@ -1,18 +1,259 @@
 /**
   * Site CSS 
   *
-  * Common utility classes for project starter
+  * Layout style taken from : http://www.freecsstemplates.org - wellness
   *
   * @author     Anis uddin Ahmad <anisniit@gmail.com>
   * @link       http://www.ajaxray.com
   */
   
-* {
-    font-family: "Lucida Grande","Tahoma","Lucida Sans Unicode",Tahoma,Verdana;
-    font-size: 12px;
+body {
+	margin: 0;
+	padding: 0;
+	background: #F8F5EC;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #A19D9A;
 }
 
+h1, h2, h3 {
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	color: #3E3530;
+}
 
+h1 { font-size: 2em; }
+h2 { font-size: 2.8em; }
+h3 { font-size: 1.6em; }
+
+p, ul, ol {
+	margin-top: 0;
+	line-height: 180%;
+}
+
+ul, ol {
+}
+
+a {
+	text-decoration: none;
+	color: #3E3530;
+}
+
+a:hover {
+}
+
+#wrapper {
+	margin: 0 auto;
+	padding: 0;
+}
+
+/* Header */
+
+#header-wrapper {
+	height: 100px;
+	background: #3C3230;
+	border-bottom: 10px solid #4F4440;
+}
+
+#header, ul#util {
+	width: 950px;
+	margin: 0 auto;
+	padding: 0px 0px 0px 30px;
+}
+
+/* Logo */
+
+#logo {
+	margin: 0;
+	padding: 0;
+	color: #000000;
+}
+
+#logo h1, #logo p {
+	margin: 0;
+	padding: 0;
+}
+
+#logo h1 {
+	letter-spacing: -1px;
+	text-transform: lowercase;
+	font-size: 3.8em;
+}
+
+#logo p {
+	margin: 0;
+	padding: 0px 0 0 2px;
+	font: normal 14px Georgia, "Times New Roman", Times, serif;
+	font-style: italic;
+	color: #FFFFFF;
+}
+
+#logo a {
+	border: none;
+	background: none;
+	text-decoration: none;
+	color: #CA5900;
+}
+/* Page */
+
+#page, #page-header{
+	width: 980px;
+	margin: 0 auto;
+	padding: 0px 0px 0px 0px;
+}
+ul#util li{
+    float: right;
+}
+
+#page-bgtop {
+	padding: 20px 0px;
+}
+/* Content */
+
+#content {
+	float: left;
+	width: 650px;
+	padding: 0px 0px 0px 0px;
+}
+
+.post {
+	margin-bottom: 40px;
+	border-bottom: 1px dotted #E7E2DC;
+}
+
+.post .title {
+	height: 41px;
+	padding: 7px 0px 0px 30px;
+	letter-spacing: -.5px;
+}
+
+.post .title a {
+	color: #3E3530;
+	border: none;
+}
+
+.post .meta {
+	margin-bottom: 30px;
+	padding: 0px 30px 0px 30px;
+	text-align: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.post .meta .date {
+	float: left;
+}
+
+.post .meta .posted {
+	float: right;
+}
+
+.post .meta a {
+}
+
+.post .entry {
+	padding: 0px 30px 20px 30px;
+	padding-bottom: 20px;
+	text-align: justify;
+}
+
+.links {
+	padding-top: 20px;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+/* Sidebar */
+
+#sidebar {
+	float: right;
+	width: 280px;
+	margin: 0px;
+	padding: 0px 20px 0px 0px;
+	color: #787878;
+}
+
+#sidebar ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#sidebar li {
+	margin: 0;
+	padding: 0;
+}
+
+#sidebar li ul {
+	margin: 0px 0px;
+	padding-bottom: 30px;
+}
+
+#sidebar li li {
+	line-height: 35px;
+	border-bottom: 1px dotted #E7E2DC;
+	margin: 0px 30px;
+	border-left: none;
+}
+
+#sidebar li li span {
+	display: block;
+	margin-top: -20px;
+	padding: 0;
+	font-size: 11px;
+	font-style: italic;
+}
+
+#sidebar h2 {
+	height: 38px;
+	padding-left: 30px;
+	letter-spacing: -.5px;
+	font-size: 1.8em;
+}
+
+#sidebar p {
+	margin: 0 0px;
+	padding: 0px 30px 20px 30px;
+	text-align: justify;
+}
+
+#sidebar a {
+	border: none;
+	color: #A19D9A;
+}
+
+#sidebar a:hover {
+	text-decoration: underline;
+	color: #8A8A8A;
+}
+
+/* Footer */
+
+#footer {
+	height: 50px;
+	margin: 0 auto;
+	padding: 0px 0 15px 0;
+	background: #F1EDE4;
+	border-top: 1px solid #EBE8DF;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#footer p {
+	margin: 0;
+	padding-top: 20px;
+	line-height: normal;
+	font-size: 9px;
+	text-transform: uppercase;
+	text-align: center;
+	color: #A0A0A0;
+}
+
+#footer a {
+	color: #8A8A8A;
+}
 
 /* ---------------------- COMMON UTILITY CLASSES ----------------------  */
 
@@ -25,6 +266,8 @@
 .clear          { clear: both; height: 0px; line-height: 0px}
 .transperent    { background: transparent !important; border-color: transparent !important;}
 
+/* -------------------  Application specific styles -------------------- */
+
 /* Text formatting */
 .text-right		{ text-align: right !important;}
 .text-center	{ text-align: center;}
@@ -34,9 +277,9 @@
 .editable{padding: 3px; border: 1px solid white}
 .edit-focus{background-color: #eee; border: 1px dotted yellow}
 
-.editing{border: 2px solid yellow}
-.editing input{background-color: yellow;}
-.editing textarea{border: 1px solid gray; background-color: #fafafa}
+.editing{}
+.editing input{border: 1px solid yellow; background-color: #FFFFDF;}
+.editing textarea{border: 1px solid gray; background-color: #FFFFDF}
 
 /* action links */
 span.actions{
@@ -56,10 +299,10 @@ span.actions a:hover{background-color: #666; color: #eee}
 }
 
 
-.add-form-holder{width: 70%; margin: 0 auto; text-align: right; padding: 10px 0; height: 25px}
+.add-form-holder{margin: 0 auto; text-align: right; padding: 10px 0; height: 25px}
 .add-form-holder a, .add-form{ float: right; margin-left:10px }
 
-.project-progress{display: block; width: 250px; height: 24px !important;}
+.project-progress{display: block; width: 200px; height: 18px !important;}
 .project-status{font-weight: normal}
 
 #cardForm{margin-top: 4px}

@@ -27,7 +27,8 @@ function getProjects($status = 'active')
                        LEFT JOIN  cards c2 ON p.id = c2.project_id
                                     AND c2.status_id = :card_status
                            WHERE  p.status = :project_status
-                           GROUP  BY p.id", 
+                           GROUP  BY p.id
+                           ORDER  BY p.id DESC",
             array('card_status' => $config['doneStatus'], 'project_status' => $status)
         );
 }

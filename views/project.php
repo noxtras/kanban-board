@@ -9,32 +9,32 @@ $project = getProject($projectId);
 if($project):
 $cards = Db::getResult('SELECT * FROM cards WHERE project_id = ?', $projectId);
 ?>
+<div id="page-header">
+    <h2><?php echo $project['name'] ?> </h2>
+    <div class="add-form-holder">
+        <a id="create-card" href="#create-card"  class="ui-link ui-state-default ui-corner-all">
+            <span class="ui-icon ui-icon-plusthick"></span>Add New Card
+        </a>
+        <form id="cardForm" name="cardForm" onsubmit="return createCard()" class="invisible">
+            <label>Card Title</label>
+            <input type="text" name="title" id="title" size="50"/>
+            <label>type</label>
+            <select name="card_type" id="card_type">
+                <?php foreach($cardTypes as $cardType): ?>
+                <option value="<?php echo $cardType['id'] ?>"><?php echo $cardType['name'] ?></option>
+                <?php endforeach; ?>
+            </select>
+            <input type="hidden" name="project" value="<?php echo $project['id'] ?>" />
+            <input type="submit" value="Create">
+        </form>
 
-<h2><?php echo $project['name'] ?> </h2>
-
-<div class="add-form-holder">
-    <a id="create-card" href="#create-card"  class="ui-link ui-state-default ui-corner-all">
-        <span class="ui-icon ui-icon-plusthick"></span>Add New Card
-    </a>
-    <form id="cardForm" name="cardForm" onsubmit="return createCard()" class="invisible">
-        <label>Card Title</label>
-        <input type="text" name="title" id="title" size="50"/>
-        <label>type</label>
-        <select name="card_type" id="card_type">
+        <div id="type-legend">
             <?php foreach($cardTypes as $cardType): ?>
-            <option value="<?php echo $cardType['id'] ?>"><?php echo $cardType['name'] ?></option>
+            <span class="card-type-<?php echo $cardType['id'] ?>">
+                  <?php echo $cardType['name'] ?>
+            </span>
             <?php endforeach; ?>
-        </select>
-        <input type="hidden" name="project" value="<?php echo $project['id'] ?>" />
-        <input type="submit" value="Create">
-    </form>
-
-    <div id="type-legend">
-        <?php foreach($cardTypes as $cardType): ?>
-        <span class="card-type-<?php echo $cardType['id'] ?>">
-              <?php echo $cardType['name'] ?>
-        </span>
-        <?php endforeach; ?>
+        </div>
     </div>
 </div>
 
