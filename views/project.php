@@ -15,9 +15,9 @@ $cards = Db::getResult('SELECT * FROM cards WHERE project_id = ?', $projectId);
         <a id="create-card" href="#create-card"  class="ui-link ui-state-default ui-corner-all">
             <span class="ui-icon ui-icon-plusthick"></span>Add New Card
         </a>
-        <form id="cardForm" name="cardForm" onsubmit="return createCard()" class="invisible">
+        <form id="card-form" name="card-form" onsubmit="return createCard()" class="invisible">
             <label>Card Title</label>
-            <input type="text" name="title" id="title" size="50"/>
+            <input type="text" name="title" id="title" size="70"/>
             <label>type</label>
             <select name="card_type" id="card_type">
                 <?php foreach($cardTypes as $cardType): ?>
@@ -40,7 +40,7 @@ $cards = Db::getResult('SELECT * FROM cards WHERE project_id = ?', $projectId);
 
 <table id="card-table" align="center" cellspacing="0" cellpadding="0" class="ui-widget">
     <thead class="ui-widget-header">
-        <tr class="ui-state-focus">
+        <tr class="ui-state-focus state-names">
         <?php foreach($statusNames as $status): ?>
             <th class="<?php if($status['WIP_column'] < 1) echo 'sub-state' ?>">
                 <?php echo $status['name'] ?>
@@ -48,7 +48,7 @@ $cards = Db::getResult('SELECT * FROM cards WHERE project_id = ?', $projectId);
         <?php endforeach; ?>
         </tr>
         
-        <tr id="WIPs" class="ui-state-active">
+        <tr id="WIPs" class="ui-state-active wips">
         <?php foreach($statusNames as $status): ?>
             <?php if($status['WIP_column'] > 0): ?>
             <th colspan="<?php echo $status['WIP_column'] ?>">
@@ -84,7 +84,7 @@ $cards = Db::getResult('SELECT * FROM cards WHERE project_id = ?', $projectId);
 <?php endif; ?>
 
     <div id="card-dialog" title="Card">
-        <span class="info small">bug created on 11/11/11</span>
+        <span class="info small">Created on 00/00/00</span>
         <span class="actions">
             <a href="#edit-card" onclick="$('#card-dialog .editable').click()">edit</a>
             <a href="#delete-card" onclick="return cardDeleteConfirmation()">delete</a>

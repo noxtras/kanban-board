@@ -1,15 +1,19 @@
-
-function bindPageEvents(){
+// Bind events for project listing page
+function bindPageEvents()
+{
+    // Make project names inline editable
     $('.project-name').editable('common/ajax_projects.php', {
          indicator  : 'Saving...',
          submitdata : {action: "renameProject"},
          cssclass   : 'editing'
      });
 
+     // Setup progerss-bars for project status
      $(".project-progress").each(function(i, obj){
         $(this).progressbar({ value: $(this).attr('title')});
      });
 
+     // Setup dialog options for Create project dialog
      var projectDialogOptions = jQuery.extend({}, dialogOptions);
      projectDialogOptions.buttons = {
         "Add": function() {
@@ -26,7 +30,7 @@ function bindPageEvents(){
 
 function createProject()
 {
-    if(! blockIfEmpty('project', 'Project name ')){
+    if(! blockIfEmpty('#project', 'Project name ')){
         $.getJSON("common/ajax_projects.php?action=createProject&" + $('#projectForm').serialize(),
           function(data){
                 if(data.status == 'success'){
@@ -75,6 +79,7 @@ function deleteProject(id)
     return false;
 }
 
+// Handle changing project status as archive/active
 function updateProjectStatus(id, status)
 {
     if(id == '' || (status != 'active' && status != 'archived')){
@@ -94,6 +99,8 @@ function updateProjectStatus(id, status)
     return false;
 }
 
+// If a Project is successfully created,
+// make html to put it in the projects table
 function makeProjectRow(id, name)
 {
     var row  = '<tr id="project-'+ id +'"  class="ui-state-default">';

@@ -31,14 +31,14 @@
         <tbody class="ui-widget-content">
             <?php foreach($projects as $project): ?>
             <tr id="project-<?php echo $project['id'] ?>" class="ui-state-default">
-                <td class="project-name editable" id="<?php echo $project['id'] ?>"><?php 
+                <td class="project-name editable" id="<?php echo $project['id'] ?>" title="Click to rename"><?php
                 echo $project['name']
                 ?></td>
                 <td align="center">
                     <span class="project-progress" title="<?php echo ($project['total_card'])? round(($project['done_card']/$project['total_card'])*100) : '0' ?>"></span>
                     <span class="project-status"><?php echo $project['done_card'], ' of ', $project['total_card'] ?> cards completed</span>
                 </td>
-                <td>
+                <td class="action">
                     <a href="<?php echo $config['baseurl'].'?page=project&id='.$project['id'] ?>" class="ui-link ui-state-default ui-corner-all">
                         <span class="ui-icon ui-icon-folder-open"></span> go
                     </a>
@@ -72,7 +72,7 @@
             <p>The board is a visual control. The kanban system is an implementation of a pull system using quantity limited signal (physical cards in manufacturing).</p>
         </li>
         <li>
-            <h2>New to KANBAN</h2>
+            <h2>New to KANBAN?</h2>
             <ul>
                 <li><a href="http://www.graphicproducts.com/tutorials/kanban/index.php"  target="_blank">What is Kanban?</a></li>
                 <li><a href="http://www.infoq.com/presentations/kanban-for-software"  target="_blank">Kanban for Software Engineering</a></li>

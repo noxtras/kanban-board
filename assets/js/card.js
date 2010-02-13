@@ -1,15 +1,24 @@
 
 function bindPageEvents(){
+
+    // Make the table columns Sortable
     $('#card-table tbody td').sortable({
         connectWith: '#card-table tbody td',
         cursor: 'pointer',
         receive: function(event, ui) {
+            // Handle card moving
             status = $(event.target).attr('id').substr('status-'.length);
             card = ui.item.attr('id').substr('card-'.length);
             savePosition(card, status);
         }
     });
 
+    // Make column width fixed, except first and last column
+    width = parseInt($('.card:first').css('width')) + 4;
+    $('tr.state-names th').css('width', width+'px');
+    $('tr.state-names th:first, tr.state-names th:last').css({"min-width": width+'px', "width": 'auto'});
+
+    // On card dialog box, make the card content inline editable
     $('.active-card').editable('common/ajax_cards.php', {
          indicator  : 'Saving...',
          submitdata : {action: "updateCard"},
@@ -20,6 +29,7 @@ function bindPageEvents(){
          cancel     : "Cancel"
      });
 
+    // When duble click on a card, open it on Card dialog
     $('.card').live('dblclick', (function(){
         $('#card-dialog .active-card').html($(this).find('.full-text').html());
         $('#card-dialog .active-card').attr('id', $(this).attr('id').substr('card-'.length));
@@ -27,36 +37,29 @@ function bindPageEvents(){
         $('#card-dialog').dialog('open');
     }));
 
+    // Setup card dialog, extending from default dialog options
     var cardDialogOptions = jQuery.extend({}, dialogOptions);
     cardDialogOptions.width = 550;
     cardDialogOptions.height = 350;
     cardDialogOptions.buttons = {
         "Close": function() {
             $(this).dialog("close");
-
-            var fullHtml  = $('#card-dialog .active-card').html();
-            var shortText = fullHtml.split('<br>').join('\n').substring(0, config.miniCardLength);
-            var id        = $('#card-dialog .active-card').attr('id');
-
-            $('#card-' + id + ' .short-text').text(shortText);
-            $('#card-' + id + ' .full-text').html(fullHtml);
-
-            // Reset
-            $('#card-dialog .active-card').text('');
-            $('#card-dialog .active-card').attr('id', 'no-card');
+            checkAndApplyChanges();
         }
     };
 
+    // On click of "Add New Card" button,
+    // swap "Create-card form" and "card type legend"
     $('#create-card').click(function(){
-        $('#cardForm').slideToggle('fast');
+        $('#card-form').slideToggle('fast');
         $('#type-legend').slideToggle('fast');
         if($('#create-card').text().indexOf('Add New Card') != -1){
             $('#create-card').html('<span class="ui-icon ui-icon-minusthick"></span>Hide Form');
+            $('#title').focus();
         } else {
             $('#create-card').html('<span class="ui-icon ui-icon-plusthick"></span>Add New Card');
         }
-
-
+        
         return false;
     })
 
@@ -66,27 +69,26 @@ function bindPageEvents(){
 
 function createCard()
 {
-    if(! blockIfEmpty('title')){
-        var url = "common/ajax_cards.php?action=createCard&" + $('#cardForm').serialize();
+    if(! blockIfEmpty('#title', 'Card title')){
+        var url = "common/ajax_cards.php?action=createCard&" + $('#card-form').serialize();
 
         $.getJSON(url,
           function(data){
                 if(data.status == 'success'){
                     $('#status-' + config.defaultStatus)
-                        .append('<div class="card card-type-'+ $('#card_type').val() +'" id="card-'+ data.message +'">'+ $('#title').val() +'</div>');
-                        $('#title').val("");
+                        .append(createCardHtml(data.message));
+                    $('#title').val("");
                 } else {
                     showCommonError('Error occured', data.message);
                 }
             }
         );// ended $.getJSON
-
-
     }
 
     return false;
 }
 
+// When a card is moved to another column, save new position
 function savePosition(card, status)
 {
     var url  = 'common/ajax_cards.php?action=savePosition';
@@ -134,4 +136,47 @@ function deleteCard(id)
     }
 
     return false;
+}
+
+// If a Card is successfully created,
+// make html to put it on the board
+function createCardHtml(id)
+{
+    var content = $('#title').val();
+    var contentShort = content.substr(0, config.miniCardLength);
+    var type = $('#card_type').val();
+    if(content.length > config.miniCardLength) contentShort += '...';
+
+    var html  = '<div id="card-'+ id +'" class="card card-type-'+ type +'">';
+    html     += '   <span class="short-text">'+ contentShort +'</span>';
+    html     += '   <span class="full-text invisible">'+ content +'</span>';
+    html     += '   <span class="info invisible">Created right now!</span>';
+    html     += '</div>'
+
+    return html;
+}
+
+// When card dialog is closing,
+// this function checks if active card (which is opened on the board)
+// content has changed.
+// If changed, take steps to reflact the change on board
+function checkAndApplyChanges()
+{
+    var editingCard = $('#card-dialog .active-card');
+    var id          = editingCard.attr('id');
+    var fullHtml    = editingCard.find('textarea').val();
+
+    if(fullHtml == undefined){ // not on editing state
+        fullHtml  = editingCard.html();
+    }
+
+    if($('#card-' + id + ' .full-text').html() != fullHtml){
+        var shortText = fullHtml.split('<br>').join('\n').substring(0, config.miniCardLength);
+        $('#card-' + id + ' .short-text').text(shortText);
+        $('#card-' + id + ' .full-text').html(fullHtml);
+    }
+
+    // Reset
+    $('#card-dialog .active-card').text('');
+    $('#card-dialog .active-card').attr('id', 'no-card');
 }

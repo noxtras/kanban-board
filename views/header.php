@@ -8,14 +8,6 @@
         <link href="<?php echo $config['baseurl'] ?>/assets/css/themes/<?php echo $config['ui_theme'] ?>/all.css" type="text/css" rel="stylesheet" />
         <link href="<?php echo $config['baseurl'] ?>/assets/css/ui_tuner.css" type="text/css" rel="stylesheet" />
 
-        <script type="text/javascript" src="<?php echo $config['baseurl'] ?>/assets/js/jquery-1.3.2.min.js"></script>
-        <script type="text/javascript" src="<?php echo $config['baseurl'] ?>/assets/js/jquery-ui-1.7.1.custom.min.js"></script>
-        <script type="text/javascript" src="<?php echo $config['baseurl'] ?>/assets/js/jeditable.js"></script>
-        <script type="text/javascript" src="<?php echo $config['baseurl'] ?>/assets/js/common.js"></script>
-        <script type="text/javascript">
-            defaultStatusId = '<?php echo $config['defaultStatus'] ?>';
-            config = <?php echo json_encode($config); ?>
-        </script>
         <title>Kanban Board</title>
     </head>
     <body>
@@ -29,6 +21,11 @@
                 </div>
 
                 <ul id="util" class="ui-icons">
+                    <li class="ui-state-default ui-corner-all" title="settings">
+                        <a href="#help" onclick="$('#help').slideToggle(); return false">
+                            <span class="ui-icon ui-icon-wrench"></span> help
+                        </a>
+                    </li>
                     <?php if($page != 'home'): ?>
                     <li class="ui-state-default ui-corner-all" title="projects">
                         <a href="<?php echo $config['baseurl'] ?>">
@@ -55,11 +52,18 @@
                             <span class="ui-icon ui-icon-wrench"></span> settings
                         </a>
                     </li>
+                    
                 </ul>
             </div>
             <!-- end #header -->
 
             <div id="page">
+                <div id="help" class="invisible">
+                    <a href="#close-help" onclick="$('#help').slideUp(); return false" class="ui-state-focus ui-corner-all" style="float: right; width: 17px; height: 18px; border-color: white;" >
+                        <span class="ui-icon ui-icon-closethick">close</span>
+                    </a>
+                    See <a href="#">wiki page</a> for more details.
+                </div>
                 <div id="page-bgtop">
                 <div id="page-bgbtm">
                 

@@ -14,7 +14,11 @@ function deleteProject()
     $projectId  = intval($_GET['id']);
 
     $data = array('id'=>$projectId, 'name'=>$name);
+
+    Db::beginTransaction();
+    $deleted = Db::execute('DELETE FROM cardss WHERE project_id = ?', $projectId);
     $deleted = Db::execute('DELETE FROM projects WHERE id = ?', $projectId);
+    Db::commitTransaction();
 
     return ($deleted)
         ? response('success', $projectId)
