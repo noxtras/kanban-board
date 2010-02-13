@@ -2,11 +2,13 @@
 /**
  * Db
  *
- * A simple wrapper for PDO. Inspired by the sweet PDO wrapper from http://www.fractalizer.ru
+ * A simple wrapper for PDO.
+ * Inspired by the sweet PDO wrapper from http://www.fractalizer.ru
  *
  * @author  Anis uddin Ahmad <anisniit@gmail.com>
+ *
+ * @link    http://www.ajaxray.com/blog/2009/08/29/simple-php-pdo-wrapper-light-static-easy-to-use/
  * @link    http://www.fractalizer.ru/frpost_120/php-pdo-wrapping-and-making-sweet/
- * @link    http://ajaxray.com
  */
 class Db
 {

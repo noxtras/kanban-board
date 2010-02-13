@@ -1,4 +1,4 @@
-// Some global settings
+// Default dialog settings
 dialogOptions = {
     autoOpen: false,
     resizable: false,
@@ -6,21 +6,22 @@ dialogOptions = {
     height: 220,
     modal: false,
     buttons: {
-            "Ok": function() {$(this).dialog("close");}
-        }
+        "Ok": function() {$(this).dialog("close");}
+    }
 }
 
 $(document).ready(function(){
 
+    // Default dialog and confirmation box
     $('#dialog').dialog(dialogOptions);
     dialogOptions.modal = true;
     $('#confirm-dialog').dialog(dialogOptions);
 
+    // Visual responses to mouse hover
     $(".editable").hover(
       function () { $(this).addClass('edit-focus'); },
       function () { $(this).removeClass('edit-focus'); }
     );
-
     $(".ui-state-default").not("#card-table tr").hover(
         function () { $(this).addClass('ui-state-hover'); },
         function () { $(this).removeClass('ui-state-hover'); }
@@ -30,15 +31,18 @@ $(document).ready(function(){
       function () { $(this).removeClass('ui-state-focus'); }
     );
 
-
+    // If current page have something to initiate, do it
+    // Call if there is a "bindPageEvents()" function
     if(typeof bindPageEvents  == 'function') {
     	bindPageEvents();
     }
 });
 
+// Checks value of a form element
+// and show error message if empty
 function blockIfEmpty(field, name)
 {    
-    if($('#' + field).val() == ''){
+    if($(field).val() == ''){
         showCommonError('Value required', name + ' cannot be empty!');
         return true;
     }
@@ -64,13 +68,6 @@ function showCommonError(title, message)
 	showCommonDialog(title, message, 'circle-close');
 }
 
-// From Jhon Resig
-Array.prototype.remove = function(from, to) {
-  var rest = this.slice((to || from) + 1 || this.length);
-  this.length = from < 0 ? this.length + from : from;
-  return this.push.apply(this, rest);
-};
-
 function showConfirmation(title, message)
 {
 	var title   = title   || 'Warning!';
@@ -81,3 +78,9 @@ function showConfirmation(title, message)
     $('#confirm-dialog').html('<p>' + iconspan + message + '</p>').dialog('open');
 }
 
+// From Jhon Resig
+Array.prototype.remove = function(from, to) {
+  var rest = this.slice((to || from) + 1 || this.length);
+  this.length = from < 0 ? this.length + from : from;
+  return this.push.apply(this, rest);
+};

@@ -102,7 +102,7 @@ $cardTypes = getCardTypes();
 <!-- end #sidebar -->
 <div class="clear">&nbsp;</div>
 
-<div id="cardtype-dialog" title="Add Card Type">
+<div id="cardtype-dialog" title="Add Card Type"  class="invisible">
     <form name="cardtype" id="cardtype" method="get" action="" onsubmit="return false">
         <ul>
             <li>
@@ -121,7 +121,7 @@ $cardTypes = getCardTypes();
     </form>
 </div>
 
-<div id="status-dialog" title="Add Workflow State">
+<div id="status-dialog" title="Add Workflow State" class="invisible">
     <form name="status" id="status" method="get" action="" onsubmit="return false">
         <ul>
             <li>
