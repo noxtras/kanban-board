@@ -1,14 +1,19 @@
+#summary How to create and maintain projects
 #labels project,Featured,tutorial
-#How to create and maintain projects
 
-= Introduction =
+= kanban-board Projects =
 
-Add your content here.
+kanban-board supports multiple projects. You can rename, archive, restore, delete a project. For discussing how, lets see the following image - 
 
+http://kanbanboard.info/public_images/home.png
 
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+=== What these buttons do? ===
+We'll use the numbers in image to refer an action.
+ 
+    # *Create Project* creates projects, simple :)
+    # This progressbar shows *Project Progress*. It's the ratio of total cards and done cards.
+    # Information about total and done cards.
+    # Forwadr you to the details page of a project, this is our <b>board</b> here.
+    # *Archive* a project. Click this button when you think a project is done/inactive or old enough. This will be archived and will not show in active project list. You will find this in *archived projects* section. You can restore it to the active projects list by clicking *active* button.
+    # *Delete* removes a project. It's not reversible, use carefully!
+    # Name of the Project. To *rename* it, just double-click on project name, change, and hit _Enter_. Press _Esc_ to left unchanged while editing.
