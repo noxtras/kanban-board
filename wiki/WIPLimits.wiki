@@ -23,5 +23,9 @@ http://kanbanboard.info/public_images/kanban_workflow_status_wip.png
 
 In settings page, there is a table with list of workflow stats. This is the place where we can set the WIP limit for a status column. Setting limit is a little different for various  types of limits - 
     * *Fixed*: Simple. Just click on the limit number, change it and press _Enter_. _Esc_ will leave unchanged.  
-    * *Unlimited*: Edit as previous way. And set the limit to 0.
-    * *Joined*: It's a bit complex.
+    * *Unlimited*: Edit as previous way and set the limit to 0.
+    * *Joined*: It's a bit complex. Explaining below.
+
+===Joining Columns===
+
+After **WIP Limit*, The next column, *WIP Column* comes into play now. This column indicates a WIP Limit will be applied on how many columns. Generally it would be 1. A single limit for a single column. When you want to join columns, change the value of first  _Workflow Status to_ column number. incomplete...
