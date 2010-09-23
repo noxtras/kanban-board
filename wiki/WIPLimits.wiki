@@ -1,14 +1,18 @@
-#summary One-sentence summary of this page.
+#summary What is WIP limit and how to work with it?
 #labels Featured,tutorial,WIP
 
-= Introduction =
+= Working with is WIP Limit =
+WIP is *Work In Progress*. A work that has been started but not yet completed (acronym: WIP). In kanban, each column has a limit of allowed cards. It's called WIP limit. 
 
-Add your content here.
+The following posts explains how it force us to be focused and keep the board running.
+http://www.agileweboperations.com/kanban-wip-limits-the-fine-art-of-focus/
+http://blog.crisp.se/henrikkniberg/2009/06/26/1246053060000.html
 
+===Where is it on kanban-board?===
+http://kanbanboard.info/public_images/kanban_WIP_limit.png
 
-= Details =
+The 2nd row of the board tells the limit of a column. You cannot (not forced yet) put more then that number of cards. 
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+===How to set WIP Limits?=
+
+http://kanbanboard.info/public_images/kanban_workflow_status_wip.png
