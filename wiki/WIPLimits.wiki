@@ -2,9 +2,9 @@
 #labels Featured,tutorial,WIP
 
 = Working with is WIP Limit =
-WIP is *Work In Progress*. A work that has been started but not yet completed (acronym: WIP). In kanban, each column has a limit of allowed cards. It's called WIP limit. 
+WIP is *Work In Progress*. A work that has been started but not yet completed (acronym: WIP). In kanban, each column (_Workflow Status_) has a limit of allowed cards. It's called WIP limit. 
 
-The following posts explains how it force us to be focused and keep the board running.
+The following posts explains how this limit forces us to be focused and keep the board running.
 
     * http://www.agileweboperations.com/kanban-wip-limits-the-fine-art-of-focus/
     * http://blog.crisp.se/henrikkniberg/2009/06/26/1246053060000.html
@@ -23,9 +23,12 @@ http://kanbanboard.info/public_images/kanban_workflow_status_wip.png
 
 In settings page, there is a table with list of workflow stats. This is the place where we can set the WIP limit for a status column. Setting limit is a little different for various  types of limits - 
     * *Fixed*: Simple. Just click on the limit number, change it and press _Enter_. _Esc_ will leave unchanged.  
-    * *Unlimited*: Edit as previous way and set the limit to 0.
+    * *Unlimited*: Edit as _Fixed_ limit and set the limit to 0.
     * *Joined*: It's a bit complex. Explaining below.
 
 ===Joining Columns===
 
-After **WIP Limit*, The next column, *WIP Column* comes into play now. This column indicates a WIP Limit will be applied on how many columns. Generally it would be 1. A single limit for a single column. When you want to join columns, change the value of first  _Workflow Status to_ column number. incomplete...
+After *WIP Limit*, The next column, *WIP Column* comes into play now. This column indicates a _WIP Limit_ will be applied on how many columns. Generally it would be 1. A single limit for a single column. 
+When you want to join columns(_Workflow Status_), change the value to number of columns that you want to join. An example can explain it easily - 
+
+Suppose, X, Y and Z are 3 sequential columns of our board that we want to join. So, let's go to _Workflow States_ of settigns page. First set the _WIP Limit_ of column X to the joined limit of these 3. And set the _WIP Column_ to 3 (as we are joining 3 coluns). Then, set the _WIP Column_ of other 2 columns, Y and Z to 0. Because they will not have any column for _WIP Limit_ now. These columns will share X column's limit. 
